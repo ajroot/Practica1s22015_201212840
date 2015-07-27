@@ -5,6 +5,8 @@
  */
 package practica1_201212840;
 
+import estructuras.ListaDoble;
+
 /**
  *
  * @author AJF
@@ -16,6 +18,18 @@ public class Practica1_201212840 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        ListaDoble a=new ListaDoble("lista prueba");
+        a.insertarInicio(1);
+        a.insertarInicio(2);
+        a.insertarInicio(3);
+        a.insertarFin(12);
+        a.insertarFin(14);
+        a.modificar(2, 22);
+        //a.eliminarFin();
+        //a.eliminarInicio();
+        a.mostrar();
+        System.out.println("Ahora alrevez");
+        a.mostrarAtras();
     }
     
 }

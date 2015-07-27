@@ -5,6 +5,9 @@
  */
 package pantallas;
 
+import java.awt.GridLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author AJF
@@ -14,10 +17,25 @@ public class carga extends javax.swing.JFrame {
     /**
      * Creates new form carga
      */
+    JPanel panelObjetos;//=new JPanel();
+    int cantidadObjetos;
     public carga() {
         initComponents();
+        panelObjetos=new JPanel();
+        cantidadObjetos=10;
     }
 
+    public void crearPanel()
+    {
+        
+        panelObjetos.removeAll();
+        panelObjetos.setLayout(new GridLayout(cantidadObjetos,1));
+        for(int i=0;i<cantidadObjetos;i++)
+        {
+            
+        }
+                   
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,9 +55,9 @@ public class carga extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
         jButton9 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        scrollObjetos = new javax.swing.JScrollPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -58,6 +76,11 @@ public class carga extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 80, 70));
 
         jButton2.setText("jButton2");
@@ -83,13 +106,13 @@ public class carga extends javax.swing.JFrame {
 
         jLabel1.setText("Presiona para agregar a tu lista");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 470, 60));
 
         jButton9.setText("Listo");
         jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
 
         jLabel2.setText("Vista de elementos:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        jPanel1.add(scrollObjetos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 470, 60));
 
         jMenu1.setText("Archivo");
 
@@ -161,6 +184,10 @@ public class carga extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -221,6 +248,6 @@ public class carga extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane scrollObjetos;
     // End of variables declaration//GEN-END:variables
 }
