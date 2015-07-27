@@ -6,6 +6,8 @@
 package practica1_201212840;
 
 import estructuras.ListaDoble;
+import pantallas.carga;
+import pantallas.nuevo;
 
 /**
  *
@@ -30,6 +32,9 @@ public class Practica1_201212840 {
         a.mostrar();
         System.out.println("Ahora alrevez");
         a.mostrarAtras();
+        carga nueva=new carga();
+        nueva.show();
+        //nuevo ax=new nuevo();
     }
     
 }

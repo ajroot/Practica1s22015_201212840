@@ -6,6 +6,8 @@
 package pantallas;
 
 import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -25,17 +27,23 @@ public class carga extends javax.swing.JFrame {
         cantidadObjetos=10;
     }
 
-    public void crearPanel()
+    String tempNombre="";
+    JLabel agregar;
+    private void setNombreObjeto()
     {
-        
-        panelObjetos.removeAll();
-        panelObjetos.setLayout(new GridLayout(cantidadObjetos,1));
-        for(int i=0;i<cantidadObjetos;i++)
-        {
-            
-        }
-                   
+        this.tempNombre=JOptionPane.showInputDialog("Ingresar nombre", "Default");
+        crearLabel();
     }
+    
+    private void crearLabel()
+    {
+        JLabel labelTemporal=new JLabel();
+        objeto a=new objeto(tempNombre,labelTemporal);
+    }
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,6 +116,11 @@ public class carga extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, -1));
 
         jButton9.setText("Listo");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
 
         jLabel2.setText("Vista de elementos:");
@@ -187,6 +200,11 @@ public class carga extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        this.setNombreObjeto();
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
