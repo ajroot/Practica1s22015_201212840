@@ -16,15 +16,23 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="labelImagen" pref="50" max="32767" attributes="0"/>
-          <Component id="nombreObjeto" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Component id="labelImagen" min="-2" pref="56" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="checkEliminar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+          <Component id="nombreObjeto" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="labelImagen" min="-2" pref="50" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="labelImagen" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="checkEliminar" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="nombreObjeto" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -33,10 +41,12 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="labelImagen">
     </Component>
-    <Component class="javax.swing.JLabel" name="nombreObjeto">
+    <Component class="javax.swing.JCheckBox" name="checkEliminar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre"/>
+        <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="nombreObjeto">
     </Component>
   </SubComponents>
 </Form>

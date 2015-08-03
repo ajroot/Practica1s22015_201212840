@@ -5,6 +5,9 @@
  */
 package pantallas;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 /**
@@ -16,10 +19,25 @@ public class objeto extends javax.swing.JPanel {
     /**
      * Creates new form objeto
      */
-    public objeto(String nombre,JLabel imagen) {
+    public objeto(String nombre,String nombreIMG) {
         initComponents();
         this.nombreObjeto.setText(nombre);
-        this.labelImagen=imagen;
+        //this.labelImagen=imagen;
+        //JLabel labelTemporal=new JLabel();
+        labelImagen.setSize(50, 50);
+        String path="../imagenes/"+nombreIMG+".png";
+        ImageIcon imgIcon = new ImageIcon(getClass().getResource(path));
+        Image imgEscalada = imgIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
+        Icon iconoEscalado = new ImageIcon(imgEscalada);
+        this.labelImagen.setIcon(iconoEscalado);
+    }
+    public boolean eliminar()    
+    {
+        if(checkEliminar.isSelected())
+        {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -32,29 +50,37 @@ public class objeto extends javax.swing.JPanel {
     private void initComponents() {
 
         labelImagen = new javax.swing.JLabel();
-        nombreObjeto = new javax.swing.JLabel();
+        checkEliminar = new javax.swing.JCheckBox();
+        nombreObjeto = new javax.swing.JTextField();
 
-        nombreObjeto.setText("Nombre");
+        checkEliminar.setText("Eliminar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labelImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-            .addComponent(nombreObjeto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkEliminar)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(nombreObjeto)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nombreObjeto))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkEliminar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(nombreObjeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox checkEliminar;
     private javax.swing.JLabel labelImagen;
-    private javax.swing.JLabel nombreObjeto;
+    private javax.swing.JTextField nombreObjeto;
     // End of variables declaration//GEN-END:variables
 }

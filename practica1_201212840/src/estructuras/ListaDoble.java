@@ -73,7 +73,7 @@ public class ListaDoble
     {
             if(primero!=null)
             {
-                    return primero;
+                    return primero.getDato();
             }
             return null;
     }
@@ -140,4 +140,12 @@ public boolean modificar(Object dt,Object nuevo)
         }
         return false;
     }
+public boolean esVacia()    
+{
+    if(primero!=null)
+    {
+        return false;
+    }
+    return true;
+}
 }
