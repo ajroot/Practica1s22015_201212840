@@ -46,34 +46,22 @@ public class carga extends javax.swing.JFrame {
     {
         tamanoObjetos++;
         this.tempNombre=JOptionPane.showInputDialog("Ingresar nombre", "Default");
-        
         objeto a=new objeto(tempNombre,nombreIMG);
         listaObjetos.insertarFin(a);
         //objetosTemp=listaObjetos;
-        lista1.add(a);
-        lista1.add("asdf", a);
         agregarAPanel(a);
     }
     
     private void agregarAPanel(objeto a)
     {
-        ListaDoble objetosTemp=listaObjetos;
+        //ListaDoble objetosTemp=listaObjetos;
         //jPanel2.removeAll();
-        JOptionPane.showMessageDialog(this,"se vacio","",JOptionPane.ERROR_MESSAGE);
+    //    JOptionPane.showMessageDialog(this,"se vacio","",JOptionPane.ERROR_MESSAGE);
         jPanel2.setLayout(null);
         jPanel2.setLayout(new GridLayout(1,tamanoObjetos));
-        while(!listaObjetos.esVacia())
-        {
-            
-            objeto n=(objeto) listaObjetos.obtenerInicio();
-            listaObjetos.eliminarInicio();
-            jPanel2.add(a);
-            jPanel2.repaint();
+        jPanel2.add(a);
         this.pack();
-        }
-        JOptionPane.showMessageDialog(this,"vacio","", JOptionPane.ERROR_MESSAGE);
-        //jPanel2.add(a);
-        listaObjetos=objetosTemp;
+        //listaObjetos=objetosTemp;
         
     }
     
@@ -119,19 +107,17 @@ public class carga extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        upila = new javax.swing.JRadioButton();
+        ucola = new javax.swing.JRadioButton();
         scrollObjetos = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
         lblBackground = new javax.swing.JLabel();
-        txteliminar = new javax.swing.JTextField();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lista1 = new javax.swing.JList();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -164,21 +150,41 @@ public class carga extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(51, 204, 0));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/hongo.png"))); // NOI18N
         jButton2.setOpaque(false);
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 80, 70));
 
         jButton3.setBackground(new java.awt.Color(51, 204, 0));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/moneda.png"))); // NOI18N
         jButton3.setOpaque(false);
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 80, 70));
 
         jButton4.setBackground(new java.awt.Color(51, 204, 0));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tortuga.png"))); // NOI18N
         jButton4.setOpaque(false);
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 80, 70));
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 80, 70));
 
         jButton5.setBackground(new java.awt.Color(51, 204, 0));
         jButton5.setOpaque(false);
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 80, 70));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 80, 70));
 
         jButton6.setBackground(new java.awt.Color(51, 204, 0));
         jButton6.setOpaque(false);
@@ -187,21 +193,18 @@ public class carga extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 80, 70));
-
-        jButton7.setBackground(new java.awt.Color(51, 204, 0));
-        jButton7.setOpaque(false);
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 80, 70));
-
-        jButton8.setBackground(new java.awt.Color(51, 204, 0));
-        jButton8.setOpaque(false);
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 80, 70));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 80, 70));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setText("Presiona para agregar a tu lista");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 370, 30));
 
         jButton9.setText("Listo");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -209,8 +212,43 @@ public class carga extends javax.swing.JFrame {
         });
         jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, -1, -1));
 
+        jButton11.setText("Limpiar Lista");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, -1, -1));
+
+        jButton10.setText("Actualizar");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, -1, -1));
+
         jLabel2.setText("Vista de elementos:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+
+        jLabel3.setText("Elija como desa utilizar :");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
+
+        upila.setText("Utilizar como Pila");
+        upila.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                upilaMouseClicked(evt);
+            }
+        });
+        jPanel1.add(upila, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, -1, -1));
+
+        ucola.setText("utilizar como Cola");
+        ucola.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ucolaMouseClicked(evt);
+            }
+        });
+        jPanel1.add(ucola, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, -1, -1));
 
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -232,30 +270,13 @@ public class carga extends javax.swing.JFrame {
         scrollObjetos.setViewportView(jPanel2);
 
         jPanel1.add(scrollObjetos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 470, 90));
-        jPanel1.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 90));
 
-        txteliminar.setText("Eliminar");
-        jPanel1.add(txteliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 100, 20));
-
-        jButton10.setText("eliminar numero");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+        lblBackground.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBackgroundMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 130, -1));
-
-        jButton11.setText("Limpiar Lista");
-        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, -1, -1));
-
-        lista1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(lista1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
+        jPanel1.add(lblBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 330));
 
         jMenu1.setText("Archivo");
 
@@ -349,10 +370,109 @@ public class carga extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jPanel2MouseClicked
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+        int a=jPanel2.countComponents();
+        JOptionPane.showMessageDialog(this,"hay "+a,"hay "+a,JOptionPane.ERROR_MESSAGE);
+        jPanel2.removeAll();
+        this.pack();
+        this.repaint();
+    }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        crearLabel("hongo");
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        crearLabel("moneda");
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        crearLabel("tortuga");
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        // TODO add your handling code here:
+        agregarALista();
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void lblBackgroundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackgroundMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_lblBackgroundMouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        // TODO add your handling code here:
+        actualizar();
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    boolean pila;
+    private void upilaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_upilaMouseClicked
+        // TODO add your handling code here:
+        if(upila.isSelected())
+        {
+            ucola.setSelected(false);
+            pila=true;
+        }
+        else
+        {
+            ucola.setSelected(true);
+            pila=false;
+        }
+    }//GEN-LAST:event_upilaMouseClicked
+
+    private void ucolaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ucolaMouseClicked
+        // TODO add your handling code here:
+        if(ucola.isSelected())
+        {
+            upila.setSelected(false);
+            pila=false;
+        }
+        else
+        {
+            upila.setSelected(true);
+            pila=true;
+        }
+    }//GEN-LAST:event_ucolaMouseClicked
+
+    public void actualizar()
+    {
+        int a=jPanel2.countComponents();
+        //jPanel2.removeAll();
+        objeto temp;
+        for(int i=0;i<a;i++)
+        {
+            temp=(objeto)jPanel2.getComponent(i);
+            if(temp.eliminar())
+            {
+                jPanel2.remove(i);
+            }
+        }
+        jPanel2.repaint();
+        
+    }
+    public void agregarALista()
+    {
+        listaObjetos.vaciar();
+        int tamano=jPanel2.countComponents();
+        objeto temporal;
+        for(int i=0;i<tamano;i++)
+        {
+            temporal=(objeto)jPanel2.getComponent(i);
+            if(!temporal.eliminar())
+            {
+             System.out.println(temporal.nombre);
+             listaObjetos.insertarFin(temporal);
+            }
+        }
+    }
     public void Componentes()
     {
         int tam=jPanel2.getComponentCount();
@@ -412,11 +532,10 @@ public class carga extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -431,10 +550,9 @@ public class carga extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBackground;
-    private javax.swing.JList lista1;
     private javax.swing.JScrollPane scrollObjetos;
-    private javax.swing.JTextField txteliminar;
+    private javax.swing.JRadioButton ucola;
+    private javax.swing.JRadioButton upila;
     // End of variables declaration//GEN-END:variables
 }

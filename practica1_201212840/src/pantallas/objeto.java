@@ -19,8 +19,26 @@ public class objeto extends javax.swing.JPanel {
     /**
      * Creates new form objeto
      */
+    String nombre="";
+    String imagen="";
+    boolean quitar=false;
+    public boolean eliminar()
+    {
+        return quitar;
+    }
+            
+    public String getNombre()
+    {
+        return this.nombre;
+    }
+    public String getImgen()
+    {
+        return this.imagen;
+    }
     public objeto(String nombre,String nombreIMG) {
         initComponents();
+        this.nombre=nombre;
+        this.imagen=nombreIMG;
         this.nombreObjeto.setText(nombre);
         //this.labelImagen=imagen;
         //JLabel labelTemporal=new JLabel();
@@ -31,14 +49,7 @@ public class objeto extends javax.swing.JPanel {
         Icon iconoEscalado = new ImageIcon(imgEscalada);
         this.labelImagen.setIcon(iconoEscalado);
     }
-    public boolean eliminar()    
-    {
-        if(checkEliminar.isSelected())
-        {
-            return true;
-        }
-        return false;
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,6 +65,11 @@ public class objeto extends javax.swing.JPanel {
         nombreObjeto = new javax.swing.JTextField();
 
         checkEliminar.setText("Eliminar");
+        checkEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkEliminarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -76,6 +92,18 @@ public class objeto extends javax.swing.JPanel {
                 .addComponent(nombreObjeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void checkEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkEliminarMouseClicked
+        // TODO add your handling code here:
+        if(this.checkEliminar.isSelected())
+        {
+            quitar=true;
+        }
+        else
+        {
+            quitar=false;
+        }
+    }//GEN-LAST:event_checkEliminarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

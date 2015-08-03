@@ -148,4 +148,8 @@ public boolean esVacia()
     }
     return true;
 }
+public void vaciar()
+{
+    primero=ultimo=null;
+}
 }
