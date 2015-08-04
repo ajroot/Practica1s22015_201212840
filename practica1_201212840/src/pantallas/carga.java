@@ -401,6 +401,10 @@ public class carga extends javax.swing.JFrame {
     private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
         // TODO add your handling code here:
         agregarALista();
+       // JOptionPane.showMessageDialog(this,"se cargo",String.valueOf(pila),JOptionPane.ERROR_MESSAGE);
+        crearTablero t=new crearTablero();
+        t.carga(listaObjetos,pila);
+        t.show();
     }//GEN-LAST:event_jButton9MouseClicked
 
     private void lblBackgroundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackgroundMouseClicked
@@ -468,10 +472,11 @@ public class carga extends javax.swing.JFrame {
             temporal=(objeto)jPanel2.getComponent(i);
             if(!temporal.eliminar())
             {
-             System.out.println(temporal.nombre);
+             //System.out.println(temporal.nombre);
              listaObjetos.insertarFin(temporal);
             }
         }
+        
     }
     public void Componentes()
     {

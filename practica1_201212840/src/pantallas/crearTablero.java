@@ -5,6 +5,12 @@
  */
 package pantallas;
 
+import estructuras.ListaDoble;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author AJF
@@ -14,10 +20,50 @@ public class crearTablero extends javax.swing.JFrame {
     /**
      * Creates new form crearTablero
      */
+    ListaDoble listaObjetos;
     public crearTablero() {
         initComponents();
+        
     }
-
+    boolean pila;
+    public void carga(ListaDoble objetos, boolean p)
+    {
+        this.listaObjetos=objetos;
+        this.pila=p;
+        cargarSiguiente();
+    }
+    
+    objeto obTemporal;
+    public void cargarSiguiente()
+    {
+        if(!listaObjetos.esVacia())
+        {
+            if(pila)
+            {
+                obTemporal=(objeto)listaObjetos.obtenerFin();
+                listaObjetos.eliminarFin();
+            }
+            else
+            {
+                obTemporal=(objeto)listaObjetos.obtenerInicio();
+                listaObjetos.eliminarInicio();
+            }
+            cargarObjeto();
+        }
+    }
+    public void cargarObjeto()
+    {
+        //this.nombreObjeto.setText(nombre);
+        //this.labelImagen=imagen;
+        //JLabel labelTemporal=new JLabel();
+        imgSiguiente.setSize(50, 50);
+        String path="../imagenes/"+obTemporal.getImgen()+".png";
+        ImageIcon imgIcon = new ImageIcon(getClass().getResource(path));
+        Image imgEscalada = imgIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
+        Icon iconoEscalado = new ImageIcon(imgEscalada);
+        this.imgSiguiente.setIcon(iconoEscalado);
+        this.nombreSiguiente.setText(obTemporal.getNombre());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,11 +73,57 @@ public class crearTablero extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        imgSiguiente = new javax.swing.JLabel();
+        nombreSiguiente = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Figura Siguiente:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        imgSiguiente.setText("jLabel2");
+        getContentPane().add(imgSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 50, 50));
+
+        nombreSiguiente.setText("jLabel3");
+        getContentPane().add(nombreSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 90, -1));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 488, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 328, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 490, 330));
+
+        jButton1.setText("Agregar Columna");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+
+        jButton2.setText("Agregar Fila");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
+
+        jButton3.setText("Informacion");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -41,19 +133,14 @@ public class crearTablero extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Reporte de Objetos Restantes",listaObjetos.estadistica(),JOptionPane.DEFAULT_OPTION);
+//listaObjetos.estadistica();
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -91,8 +178,15 @@ public class crearTablero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel imgSiguiente;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel nombreSiguiente;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,0 +1,52 @@
+﻿public static void generarArchivo(String texto)//genera el archivo para genera la imagen de la lista
+    {
+      FileWriter fichero = null;
+      PrintWriter pw = null;
+        try
+        {
+            fichero = new FileWriter("C:\\Users\\freddy\\Documents\\NetBeansProjects\\Practica1_EDD\\CatalogoPlanta.txt");
+            pw = new PrintWriter(fichero);
+ 
+            
+                pw.println("digraph A{"+"\r\n"+"node [fontsize = \"16\" shape = \"shape\"];"+"\r\n"+texto+"\r\n"+"}");
+ 
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+           // Nuevamente aprovechamos el finally para 
+           // asegurarnos que se cierra el fichero.
+           if (null != fichero)
+              fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+        }
+    }
+    public static void Generar()//Genera la imagen de la lista
+    {
+        try{
+           String dotPath="C:\\Graphviz\\release\\bin\\dot.exe"; 
+           String fileInputPath="C:\\Users\\freddy\\Documents\\NetBeansProjects\\Practica1_EDD\\CatalogoPlanta.txt";
+           String fileOutputPath="C:\\Users\\freddy\\Documents\\NetBeansProjects\\Practica1_EDD\\CatalogoPlanta.png";
+           String tParam="-Tjpg";
+           String tOParam="-o";
+           
+           
+           String[] cmd=new String[5];
+           cmd[0]=dotPath;
+           cmd[1]=tParam;
+           cmd[2]=fileInputPath;
+           cmd[3]=tOParam;
+           cmd[4]=fileOutputPath;
+           
+           Runtime rt=Runtime.getRuntime();
+           rt.exec(cmd);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+            
+        }
+    
+    }
+ 

@@ -5,6 +5,8 @@
  */
 package estructuras;
 
+import pantallas.objeto;
+
 /**
  *
  * @author AJF
@@ -91,6 +93,14 @@ public class ListaDoble
                     }
             }
     }
+    public Object obtenerFin()
+    {
+        if(primero!=null)
+        {
+            return ultimo.getDato();
+        }
+        return null;
+    }
 
     public void mostrar()
     {
@@ -151,5 +161,44 @@ public boolean esVacia()
 public void vaciar()
 {
     primero=ultimo=null;
+}
+
+public String estadistica()
+{
+    Nodo temporal=primero;
+    int bloque=0, hongo=0,moneda=0,tortuga=0, castillo=0,principal=0;
+    String nombre="";
+    objeto x;
+    while(temporal!=null)
+    {
+        x=(objeto)temporal.getDato();
+        nombre=x.getImgen();
+        if(nombre.equals("hongo"))
+        {
+            hongo++;
+        }
+        else if(nombre.equals("bloque"))
+        {
+            bloque++;
+        }
+        else if(nombre.equals("moneda"))
+        {
+            moneda++;
+        }
+        else if(nombre.equals("tortuga"))
+        {
+            tortuga++;
+        }
+        else if(nombre.equals("principal"))
+        {
+            principal++;
+        }
+        else if(nombre.equals("castillo"))
+        {
+            castillo++;
+        }
+    }
+    return "Se ecuentra lo siguiente: \n hongos: "+hongo+"\n bloques: "+bloque+"\n monedas: "+moneda+"\n tortugas: "+tortuga
+            +"\n Personaje Principal: principal"+"\n Castillo: "+castillo;
 }
 }
