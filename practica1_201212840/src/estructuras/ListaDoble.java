@@ -91,11 +91,15 @@ public class ListaDoble
                     {
                             ultimo.setSiguiente(null);
                     }
+                    else
+                    {
+                        primero=ultimo=null;
+                    }
             }
     }
     public Object obtenerFin()
     {
-        if(primero!=null)
+        if(ultimo!=null)
         {
             return ultimo.getDato();
         }
@@ -197,6 +201,7 @@ public String estadistica()
         {
             castillo++;
         }
+        temporal=temporal.getSiguiente();
     }
     return "Se ecuentra lo siguiente: \n hongos: "+hongo+"\n bloques: "+bloque+"\n monedas: "+moneda+"\n tortugas: "+tortuga
             +"\n Personaje Principal: principal"+"\n Castillo: "+castillo;

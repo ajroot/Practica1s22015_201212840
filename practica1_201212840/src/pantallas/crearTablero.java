@@ -34,6 +34,7 @@ public class crearTablero extends javax.swing.JFrame {
     }
     
     objeto obTemporal;
+    ListaDoble rechazados=new ListaDoble("Objetos rechazados");
     public void cargarSiguiente()
     {
         if(!listaObjetos.esVacia())
@@ -80,6 +81,7 @@ public class crearTablero extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -123,7 +125,15 @@ public class crearTablero extends javax.swing.JFrame {
                 jButton3MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));
+
+        jButton4.setText("Descartar");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 100, -1));
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -138,9 +148,19 @@ public class crearTablero extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "Reporte de Objetos Restantes",listaObjetos.estadistica(),JOptionPane.DEFAULT_OPTION);
+        JOptionPane.showMessageDialog(this,listaObjetos.estadistica(), "Reporte de Objetos Restantes",JOptionPane.DEFAULT_OPTION);
 //listaObjetos.estadistica();
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        if(!listaObjetos.esVacia())
+        {
+        rechazados.insertarFin(obTemporal);
+        cargarSiguiente();    
+        }
+        
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -182,6 +202,7 @@ public class crearTablero extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
