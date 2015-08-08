@@ -6,9 +6,12 @@
 package pantallas;
 
 import estructuras.ListaDoble;
+//import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,7 +33,9 @@ public class crearTablero extends javax.swing.JFrame {
     {
         this.listaObjetos=objetos;
         this.pila=p;
+        panelTablero.setLayout(new GridLayout(4,3));
         cargarSiguiente();
+       llenarLabels();
     }
     
     objeto obTemporal;
@@ -51,7 +56,22 @@ public class crearTablero extends javax.swing.JFrame {
             }
             cargarObjeto();
         }
+        
     }
+    private void llenarLabels()
+    {
+        JLabel nuevo;
+        int tamano=tamX*tamY;
+        for(int i=0;i<tamano;i++)
+        {
+            {
+                nuevo=new JLabel(String.valueOf(i));
+                
+                panelTablero.add(nuevo, i);
+            }
+        }
+    }
+    JLabel temporal=new JLabel();
     public void cargarObjeto()
     {
         //this.nombreObjeto.setText(nombre);
@@ -63,6 +83,8 @@ public class crearTablero extends javax.swing.JFrame {
         Image imgEscalada = imgIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
         Icon iconoEscalado = new ImageIcon(imgEscalada);
         this.imgSiguiente.setIcon(iconoEscalado);
+        this.temporal=new JLabel();
+        this.temporal.setIcon(iconoEscalado);
         this.nombreSiguiente.setText(obTemporal.getNombre());
     }
     /**
@@ -77,7 +99,7 @@ public class crearTablero extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         imgSiguiente = new javax.swing.JLabel();
         nombreSiguiente = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        panelTablero = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -98,25 +120,43 @@ public class crearTablero extends javax.swing.JFrame {
         nombreSiguiente.setText("jLabel3");
         getContentPane().add(nombreSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 90, -1));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelTablero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelTablero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelTableroMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelTableroMouseEntered(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelTableroLayout = new javax.swing.GroupLayout(panelTablero);
+        panelTablero.setLayout(panelTableroLayout);
+        panelTableroLayout.setHorizontalGroup(
+            panelTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 488, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelTableroLayout.setVerticalGroup(
+            panelTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 328, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 490, 330));
+        getContentPane().add(panelTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 490, 330));
 
         jButton1.setText("Agregar Columna");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jButton2.setText("Agregar Fila");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
 
         jButton3.setText("Informacion");
@@ -156,11 +196,64 @@ public class crearTablero extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(!listaObjetos.esVacia())
         {
-        rechazados.insertarFin(obTemporal);
-        cargarSiguiente();    
+            rechazados.insertarFin(obTemporal);
+            cargarSiguiente();    
         }
-        
     }//GEN-LAST:event_jButton4MouseClicked
+
+    int tamX=4;
+    int tamY=3;
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        tamX++;
+        this.panelTablero.setLayout(null);
+        this.panelTablero.setLayout(new GridLayout(tamX,tamY));
+        for(int i=0;i<tamY;i++)
+        {
+             JLabel nuevo=new JLabel (String.valueOf(((tamX-1)*tamY)+i));
+        this.panelTablero.add(nuevo);
+            
+        }
+       
+        this.panelTablero.repaint();
+        this.pack();
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        tamY++;
+        this.panelTablero.setLayout(new GridLayout(tamX,tamY));
+        for(int i=0;i<tamX;i++)
+        {
+             JLabel nuevo=new JLabel (String.valueOf(((tamY-1)*tamX)+i));
+        this.panelTablero.add(nuevo);
+            
+        }
+        this.panelTablero.repaint();
+        this.pack();
+        
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    /*int tX=50;
+    int tY=50;*/
+    private void panelTableroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTableroMouseClicked
+        // TODO add your handling code here:
+       int x=panelTablero.getComponentZOrder(panelTablero.getComponentAt(panelTablero.getMousePosition()));
+       JLabel n=(JLabel)this.panelTablero.getComponent(x);
+      /* tX=n.getX();
+       tY=n.getY();*/
+       JOptionPane.showMessageDialog(this,x,String.valueOf(x),JOptionPane.ERROR_MESSAGE);
+       panelTablero.remove(x);
+       panelTablero.add(temporal, x);
+       this.panelTablero.setLayout(new GridLayout(tamX,tamY));
+       cargarSiguiente();
+       panelTablero.repaint();
+       this.pack();
+    }//GEN-LAST:event_panelTableroMouseClicked
+
+    private void panelTableroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTableroMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_panelTableroMouseEntered
 
     /**
      * @param args the command line arguments
@@ -207,7 +300,7 @@ public class crearTablero extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nombreSiguiente;
+    private javax.swing.JPanel panelTablero;
     // End of variables declaration//GEN-END:variables
 }
