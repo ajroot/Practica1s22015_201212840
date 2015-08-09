@@ -64,6 +64,8 @@ public class objeto extends javax.swing.JPanel {
         checkEliminar = new javax.swing.JCheckBox();
         nombreObjeto = new javax.swing.JTextField();
 
+        setOpaque(false);
+
         checkEliminar.setText("Eliminar");
         checkEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

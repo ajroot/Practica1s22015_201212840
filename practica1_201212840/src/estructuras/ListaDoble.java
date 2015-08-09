@@ -166,7 +166,14 @@ public void vaciar()
 {
     primero=ultimo=null;
 }
-
+public Nodo getNodoPrimero()
+{
+    return this.primero;
+}
+public Nodo getNodoUltimo()
+{
+    return this.ultimo;
+}
 public String estadistica()
 {
     Nodo temporal=primero;

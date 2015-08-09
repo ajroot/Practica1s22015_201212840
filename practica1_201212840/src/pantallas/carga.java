@@ -6,15 +6,16 @@
 package pantallas;
 
 import estructuras.ListaDoble;
+import graficas.crearArchivos;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.PopupMenu;
+//import java.awt.PopupMenu;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+//import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -113,6 +114,7 @@ public class carga extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
         upila = new javax.swing.JRadioButton();
         ucola = new javax.swing.JRadioButton();
         scrollObjetos = new javax.swing.JScrollPane();
@@ -234,6 +236,14 @@ public class carga extends javax.swing.JFrame {
         jLabel3.setText("Elija como desa utilizar :");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
 
+        jButton7.setText("Graficar");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
+
         upila.setText("Utilizar como Pila");
         upila.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -250,6 +260,9 @@ public class carga extends javax.swing.JFrame {
         });
         jPanel1.add(ucola, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, -1, -1));
 
+        scrollObjetos.setOpaque(false);
+
+        jPanel2.setOpaque(false);
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel2MouseClicked(evt);
@@ -446,6 +459,13 @@ public class carga extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ucolaMouseClicked
 
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        agregarALista();
+        crearArchivos n=new crearArchivos();
+        n.graficarLista(listaObjetos);
+    }//GEN-LAST:event_jButton7MouseClicked
+
     public void actualizar()
     {
         int a=jPanel2.countComponents();
@@ -537,6 +557,7 @@ public class carga extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
