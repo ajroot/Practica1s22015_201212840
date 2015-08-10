@@ -9,6 +9,7 @@ import estructuras.ListaDoble;
 //import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -35,7 +36,8 @@ public class crearTablero extends javax.swing.JFrame {
         this.pila=p;
         panelTablero.setLayout(new GridLayout(4,3));
         cargarSiguiente();
-        eliminar();
+        //eliminar();
+        
        llenarLabels();
     }
     
@@ -43,21 +45,21 @@ public class crearTablero extends javax.swing.JFrame {
     ListaDoble rechazados=new ListaDoble("Objetos rechazados");
     public void cargarSiguiente()
     {
-        if(!listaObjetos.esVacia())
+        //if(!listaObjetos.esVacia())
         {
             if(pila)
             {
                 obTemporal=(objeto)listaObjetos.obtenerFin();
-                //listaObjetos.eliminarFin();
+                listaObjetos.eliminarFin();
             }
             else
             {
                 obTemporal=(objeto)listaObjetos.obtenerInicio();
-                //listaObjetos.eliminarInicio();
+                listaObjetos.eliminarInicio();
             }
             cargarObjeto();
         }
-        else
+        //else
         {
             //panelTablero.setEnabled(false);
         }
@@ -91,21 +93,39 @@ public class crearTablero extends javax.swing.JFrame {
             }
         }
     }
+    boolean termino=false;
     JLabel temporal=new JLabel();
     public void cargarObjeto()
     {
         //this.nombreObjeto.setText(nombre);
         //this.labelImagen=imagen;
         //JLabel labelTemporal=new JLabel();
-        imgSiguiente.setSize(50, 50);
-        String path="../imagenes/"+obTemporal.getImgen()+".png";
-        ImageIcon imgIcon = new ImageIcon(getClass().getResource(path));
-        Image imgEscalada = imgIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
-        Icon iconoEscalado = new ImageIcon(imgEscalada);
-        this.imgSiguiente.setIcon(iconoEscalado);
-        this.temporal=new JLabel();
-        this.temporal.setIcon(iconoEscalado);
-        this.nombreSiguiente.setText(obTemporal.getNombre());
+        try
+        {
+            //File n=new File("../imagenes/"+obTemporal.getImgen()+".png");
+            //if(n.exists())
+            {
+                imgSiguiente.setSize(50, 50);
+            String path="../imagenes/"+obTemporal.getImgen()+".png";
+            if(path.equals("../imagenes/.png"))
+            {
+                path="../imagenes/nada.png";
+            }
+            ImageIcon imgIcon = new ImageIcon(getClass().getResource(path));
+            Image imgEscalada = imgIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
+            Icon iconoEscalado = new ImageIcon(imgEscalada);
+            this.imgSiguiente.setIcon(iconoEscalado);
+            this.temporal=new JLabel();
+            this.temporal.setIcon(iconoEscalado);
+            this.nombreSiguiente.setText(obTemporal.getNombre());
+            }
+            
+        }
+        finally
+        {
+            
+        }
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -214,7 +234,7 @@ public class crearTablero extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
-        if(!listaObjetos.esVacia())
+//        if(!listaObjetos.esVacia())
         {
             //rechazados.insertarFin(obTemporal);
             if(pila)
@@ -270,7 +290,24 @@ public class crearTablero extends javax.swing.JFrame {
         if(!listaObjetos.esVacia())
         {
             cargarATablero();
-            eliminar();
+    //        eliminar();
+        }
+        else
+        {
+            if(termino==false)
+            {
+                    objeto n=new objeto("vacio","nada");
+        if(pila)
+        {
+            listaObjetos.insertarInicio(n);
+        }
+        else
+        {
+            listaObjetos.insertarFin(n);
+        }
+        termino=true;
+            }
+            
         }
        
     }//GEN-LAST:event_panelTableroMouseClicked

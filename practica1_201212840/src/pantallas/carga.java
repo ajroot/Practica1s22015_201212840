@@ -476,9 +476,11 @@ public class carga extends javax.swing.JFrame {
             temp=(objeto)jPanel2.getComponent(i);
             if(temp.eliminar())
             {
+                //JOptionPane.showMessageDialog(this,"se va a elimianar ", String.valueOf(i),JOptionPane.ERROR_MESSAGE);
                 jPanel2.remove(i);
             }
         }
+        jPanel2.setLayout(new GridLayout());
         jPanel2.repaint();
         
     }

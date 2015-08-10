@@ -36,7 +36,9 @@ public class objeto extends javax.swing.JPanel {
         return this.imagen;
     }
     public objeto(String nombre,String nombreIMG) {
-        initComponents();
+        if(!nombreIMG.equals("nada"))
+        {
+            initComponents();
         this.nombre=nombre;
         this.imagen=nombreIMG;
         this.nombreObjeto.setText(nombre);
@@ -48,6 +50,8 @@ public class objeto extends javax.swing.JPanel {
         Image imgEscalada = imgIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
         Icon iconoEscalado = new ImageIcon(imgEscalada);
         this.labelImagen.setIcon(iconoEscalado);
+        }
+        
     }
     
 
