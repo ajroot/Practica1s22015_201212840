@@ -20,7 +20,23 @@ public class Practica1_201212840 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        /*ListaDoble a=new ListaDoble("nueva");
+        a.insertarFin("x");
+        a.insertarFin("b");
+        a.insertarInicio("2");
+        a.insertarInicio("1");
+        a.eliminarInicio();
+        a.eliminarInicio();
+        a.eliminarInicio();
+        if(a.esVacia())
+        {
+            System.out.println("esta vacia");
+        }
+        else
+        {
+            System.out.println("no esta vacia");
+        }
+        a.mostrar();*/
         carga nueva=new carga();
         nueva.show();
         //nuevo ax=new nuevo();

@@ -35,6 +35,7 @@ public class crearTablero extends javax.swing.JFrame {
         this.pila=p;
         panelTablero.setLayout(new GridLayout(4,3));
         cargarSiguiente();
+        eliminar();
        llenarLabels();
     }
     
@@ -47,16 +48,35 @@ public class crearTablero extends javax.swing.JFrame {
             if(pila)
             {
                 obTemporal=(objeto)listaObjetos.obtenerFin();
-                listaObjetos.eliminarFin();
+                //listaObjetos.eliminarFin();
             }
             else
             {
                 obTemporal=(objeto)listaObjetos.obtenerInicio();
-                listaObjetos.eliminarInicio();
+                //listaObjetos.eliminarInicio();
             }
             cargarObjeto();
         }
+        else
+        {
+            //panelTablero.setEnabled(false);
+        }
+                
         
+    }
+    
+    public void eliminar()
+    {
+        if(pila)
+            {
+                //obTemporal=(objeto)listaObjetos.obtenerFin();
+                listaObjetos.eliminarFin();
+            }
+            else
+            {
+               // obTemporal=(objeto)listaObjetos.obtenerInicio();
+                listaObjetos.eliminarInicio();
+            }
     }
     private void llenarLabels()
     {
@@ -196,8 +216,17 @@ public class crearTablero extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(!listaObjetos.esVacia())
         {
-            rechazados.insertarFin(obTemporal);
-            cargarSiguiente();    
+            //rechazados.insertarFin(obTemporal);
+            if(pila)
+            {
+                listaObjetos.insertarInicio(obTemporal);
+            }
+            else
+            {
+                listaObjetos.insertarFin(obTemporal);
+            }
+            cargarSiguiente(); 
+            
         }
     }//GEN-LAST:event_jButton4MouseClicked
 
@@ -238,7 +267,18 @@ public class crearTablero extends javax.swing.JFrame {
     int tY=50;*/
     private void panelTableroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTableroMouseClicked
         // TODO add your handling code here:
-       int x=panelTablero.getComponentZOrder(panelTablero.getComponentAt(panelTablero.getMousePosition()));
+        if(!listaObjetos.esVacia())
+        {
+            cargarATablero();
+            eliminar();
+        }
+       
+    }//GEN-LAST:event_panelTableroMouseClicked
+
+    
+    public void cargarATablero()
+    {
+        int x=panelTablero.getComponentZOrder(panelTablero.getComponentAt(panelTablero.getMousePosition()));
        JLabel n=(JLabel)this.panelTablero.getComponent(x);
       /* tX=n.getX();
        tY=n.getY();*/
@@ -249,8 +289,7 @@ public class crearTablero extends javax.swing.JFrame {
        cargarSiguiente();
        panelTablero.repaint();
        this.pack();
-    }//GEN-LAST:event_panelTableroMouseClicked
-
+    }
     private void panelTableroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTableroMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_panelTableroMouseEntered

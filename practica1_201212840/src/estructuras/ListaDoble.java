@@ -68,6 +68,10 @@ public class ListaDoble
                     {
                             primero.setAnterior(null);
                     }
+                    else
+                    {
+                        primero=ultimo=null;
+                    }
             }
     }
 
