@@ -53,6 +53,13 @@ public class crearArchivos {
         System.out.println(txt);
             crearFichero(txt,"lista");
     }
+    public void crearGraficaMatriz(String t)
+    {
+        String txt="digraph G\n {\n";
+        txt+=t+"\n}";
+        crearFichero(txt,"Matriz");
+        
+    }
     
     public void crearImagen(String nombre)
     {

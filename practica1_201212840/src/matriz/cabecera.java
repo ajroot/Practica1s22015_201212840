@@ -142,7 +142,7 @@ public class cabecera {
         return false;
     }
     
-    public void imprimir()
+    public String imprimir()
     {
         nodoCabecera inicio=primero;
         Nodo temp;
@@ -150,22 +150,25 @@ public class cabecera {
         String txtNodos="";
         while(inicio!=null)
         {
-            txtCabecera+=inicio.getX()+inicio.getNombre()+"\t";
+            txtCabecera+=inicio.getX()+"->";
                 temp=inicio.getPrimerHijo();
+                txtNodos+=temp.getX();
                 while(temp!=null)
                 {
-                    txtNodos+=temp.getX()+","+temp.getY()+String.valueOf(temp.getDato());
+                    txtNodos+="->pos"+temp.getX()+temp.getY()+String.valueOf(temp.getDato());
                     temp=temp.getAbajo();
                     
                 }
-            
+            txtNodos+=";\n";
             inicio=inicio.getSiguiente();
         }
+        txtCabecera+="null;";
         System.out.println(txtCabecera);
         System.out.println(txtNodos);
+        return txtCabecera+"\n"+txtNodos;
     }
     
-    public void RecorrerDerechaIzquierda()
+    public String RecorrerDerechaIzquierda()
     {
         nodoCabecera inicio=primero;
         Nodo temp=inicio.getPrimerHijo();
@@ -178,16 +181,17 @@ public class cabecera {
             while(temp2!=null)
             {
                 //System.out.println(contador);
-                texto+=" "+temp2.getX()+","+temp2.getY()+String.valueOf(temp2.getDato())+"->";
+                texto+="pos"+String.valueOf(temp2.getX())+""+String.valueOf(temp2.getY())+""+String.valueOf(temp2.getDato())+"->";
                 temp2=temp2.getDerecha();
                 contador++;
             }
-            texto+="null \n";
+            texto+="null; \n";
             temp=temp.getAbajo();
         }
         System.out.println(texto);
+        return texto;
     }
-    public void RecorrerIzquierdaDerecha()
+    public String RecorrerIzquierdaDerecha()
     {
         nodoCabecera inicio=ultimo;
         Nodo temp=inicio.getPrimerHijo();
@@ -200,13 +204,14 @@ public class cabecera {
             while(temp2!=null)
             {
                 //System.out.println(contador);
-                texto+=" "+temp2.getX()+","+temp2.getY()+String.valueOf(temp2.getDato())+"->";
+                texto+="pos"+String.valueOf(temp2.getX())+""+String.valueOf(temp2.getY())+""+String.valueOf(temp2.getDato())+"->";
                 temp2=temp2.getIzquierda();
                 contador++;
             }
-            texto+="null \n";
+            texto+="null;\n";
             temp=temp.getAbajo();
         }
         System.out.println(texto);
+        return texto;
     }
 }

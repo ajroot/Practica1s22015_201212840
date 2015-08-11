@@ -53,6 +53,10 @@ public class objeto extends javax.swing.JPanel {
         }
         
     }
+    public JLabel getLabel()    
+    {
+        return this.labelImagen;
+    }
     
 
     /**

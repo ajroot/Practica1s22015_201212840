@@ -87,19 +87,21 @@ public class crearTablero extends javax.swing.JFrame {
     }
     private void llenarLabels()
     {
-        JLabel nuevo;
+        obTablero nuevo;
         int tamano=tamX*tamY;
         for(int i=0;i<tamano;i++)
         {
             {
-                nuevo=new JLabel(String.valueOf(i));
+                nuevo=new obTablero();
                 
                 panelTablero.add(nuevo, i);
             }
         }
     }
     boolean termino=false;
-    JLabel temporal=new JLabel();
+    //JLabel temporal=new JLabel();
+    obTablero temporal=new obTablero();
+    ListaDoble listaMatriz=new ListaDoble("lista Matriz");
     public void cargarObjeto()
     {
         //this.nombreObjeto.setText(nombre);
@@ -120,8 +122,12 @@ public class crearTablero extends javax.swing.JFrame {
             Image imgEscalada = imgIcon.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH);
             Icon iconoEscalado = new ImageIcon(imgEscalada);
             this.imgSiguiente.setIcon(iconoEscalado);
-            this.temporal=new JLabel();
-            this.temporal.setIcon(iconoEscalado);
+            temporal=new obTablero();
+            JLabel temporal2=new JLabel();
+            temporal2.setIcon(iconoEscalado);
+            this.temporal.setjLabel1(obTemporal.getLabel());
+            this.temporal.setNombre(obTemporal.getNombre());
+            this.temporal.setTipo(obTemporal.getImgen());
             this.nombreSiguiente.setText(obTemporal.getNombre());
             }
             
@@ -282,7 +288,7 @@ public class crearTablero extends javax.swing.JFrame {
         this.panelTablero.setLayout(new GridLayout(tamX,tamY));
         for(int i=0;i<tamY;i++)
         {
-             JLabel nuevo=new JLabel (String.valueOf(((tamX-1)*tamY)+i));
+             obTablero nuevo=new obTablero();// (String.valueOf(((tamX-1)*tamY)+i));
         this.panelTablero.add(nuevo);
             
         }
@@ -297,7 +303,7 @@ public class crearTablero extends javax.swing.JFrame {
         this.panelTablero.setLayout(new GridLayout(tamX,tamY));
         for(int i=0;i<tamX;i++)
         {
-             JLabel nuevo=new JLabel (String.valueOf(((tamY-1)*tamX)+i));
+             obTablero nuevo=new obTablero();// (String.valueOf(((tamY-1)*tamX)+i));
         this.panelTablero.add(nuevo);
             
         }
@@ -340,7 +346,7 @@ public class crearTablero extends javax.swing.JFrame {
     public void cargarATablero()
     {
         int x=panelTablero.getComponentZOrder(panelTablero.getComponentAt(panelTablero.getMousePosition()));
-       JLabel n=(JLabel)this.panelTablero.getComponent(x);
+       //Object n=(JLabel)this.panelTablero.getComponent(x);
       /* tX=n.getX();
        tY=n.getY();*/
        JOptionPane.showMessageDialog(this,x,String.valueOf(x),JOptionPane.ERROR_MESSAGE);
@@ -368,6 +374,41 @@ public class crearTablero extends javax.swing.JFrame {
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         // TODO add your handling code here:
         cabecera matriz=new cabecera(tamX,tamY);
+        matriz.crearCabecera();
+        int cantidad=panelTablero.getComponentCount();
+        //int columnas=cantidad/tamX;
+ //       int contador=0;
+        ListaDoble nueva=new ListaDoble("temporal tablero");
+        obTablero t=new obTablero();
+        String texto="";
+        int xi=panelTablero.getComponentCount();
+        for (int i=0;i<xi;i++)
+        {
+            listaMatriz.insertarFin(panelTablero.getComponent(i));
+        }
+        for (int j=0;j<(tamX);j++)
+        {
+            for(int i=0;i<tamY;i++)
+            {
+                try
+                {
+                    t=(obTablero)listaMatriz.obtenerInicio();
+                    listaMatriz.eliminarInicio();
+                    texto="Nombre_"+t.getNombre()+"_Tipo_"+t.getTipo();
+                    matriz.insertar(i, j,texto);
+                }
+                finally{};
+                
+                
+                //
+                
+            }
+            
+        }
+        //;
+        String enviar=matriz.imprimir()+"\n"+matriz.RecorrerDerechaIzquierda()+"\n"+matriz.RecorrerIzquierdaDerecha();
+        crearArchivos ca=new crearArchivos();
+        ca.crearGraficaMatriz(enviar);
         
     }//GEN-LAST:event_jButton6MouseClicked
 
