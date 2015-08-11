@@ -22,15 +22,16 @@ public class crearArchivos {
     public void graficarLista(ListaDoble lista)
     {
         objeto n,temp1=null;
+        ListaDoble x=lista;
         objeto primer=(objeto)lista.obtenerInicio();
         objeto ultimo=(objeto)lista.obtenerFin();
         String txt="digraph G\n {\n";
         String img, nombre;
         int contador=1;
-        while(!lista.esVacia())
+        while(!x.esVacia())
         {
-            n=(objeto)lista.obtenerInicio();
-            lista.eliminarInicio();
+            n=(objeto)x.obtenerInicio();
+            x.eliminarInicio();
             nombre=n.getNombre();
             img=n.getImgen();
             

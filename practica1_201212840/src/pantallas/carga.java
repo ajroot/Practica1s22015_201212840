@@ -471,7 +471,7 @@ public class carga extends javax.swing.JFrame {
         int a=jPanel2.countComponents();
         //jPanel2.removeAll();
         objeto temp;
-        for(int i=0;i<a;i++)
+        for(int i=0;i<a-1;i++)
         {
             temp=(objeto)jPanel2.getComponent(i);
             if(temp.eliminar())

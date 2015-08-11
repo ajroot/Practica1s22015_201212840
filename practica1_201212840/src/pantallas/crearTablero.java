@@ -6,6 +6,9 @@
 package pantallas;
 
 import estructuras.ListaDoble;
+import graficas.crearArchivos;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 //import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -14,6 +17,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import matriz.cabecera;
 
 /**
  *
@@ -37,7 +41,8 @@ public class crearTablero extends javax.swing.JFrame {
         panelTablero.setLayout(new GridLayout(4,3));
         cargarSiguiente();
         //eliminar();
-        
+        //panelMatriz.setLayout(new GridBagLayout());
+        //cargarT2();
        llenarLabels();
     }
     
@@ -144,6 +149,8 @@ public class crearTablero extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -174,30 +181,30 @@ public class crearTablero extends javax.swing.JFrame {
         panelTablero.setLayout(panelTableroLayout);
         panelTableroLayout.setHorizontalGroup(
             panelTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 488, Short.MAX_VALUE)
+            .addGap(0, 468, Short.MAX_VALUE)
         );
         panelTableroLayout.setVerticalGroup(
             panelTableroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 328, Short.MAX_VALUE)
+            .addGap(0, 338, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panelTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 490, 330));
+        getContentPane().add(panelTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 470, 340));
 
-        jButton1.setText("Agregar Columna");
+        jButton1.setText("+fil");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 90, -1));
 
-        jButton2.setText("Agregar Fila");
+        jButton2.setText("+Col");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, -1, -1));
 
         jButton3.setText("Informacion");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -205,7 +212,7 @@ public class crearTablero extends javax.swing.JFrame {
                 jButton3MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
 
         jButton4.setText("Descartar");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -214,6 +221,22 @@ public class crearTablero extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 100, -1));
+
+        jButton5.setText("Graficar Lista");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 120, -1));
+
+        jButton6.setText("Graficar Matriz");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, -1, -1));
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -313,6 +336,7 @@ public class crearTablero extends javax.swing.JFrame {
     }//GEN-LAST:event_panelTableroMouseClicked
 
     
+    
     public void cargarATablero()
     {
         int x=panelTablero.getComponentZOrder(panelTablero.getComponentAt(panelTablero.getMousePosition()));
@@ -330,6 +354,22 @@ public class crearTablero extends javax.swing.JFrame {
     private void panelTableroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTableroMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_panelTableroMouseEntered
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        ListaDoble aGraf=new ListaDoble();
+        //aGraf=listaObjetos;
+        crearArchivos nuevoListas=new crearArchivos();
+        nuevoListas.graficarLista(listaObjetos);
+       // listaObjetos=aGraf;
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        cabecera matriz=new cabecera(tamX,tamY);
+        
+    }//GEN-LAST:event_jButton6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -372,6 +412,8 @@ public class crearTablero extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
