@@ -19,7 +19,7 @@ public class obTablero extends javax.swing.JPanel {
     /**
      * Creates new form obTablero
      */
-    String nombre;
+    String nombre=null;
     String tipo;
     JLabel nuevo;
     public obTablero() {

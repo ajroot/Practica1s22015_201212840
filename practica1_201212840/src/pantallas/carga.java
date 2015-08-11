@@ -185,11 +185,23 @@ public class carga extends javax.swing.JFrame {
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 80, 70));
 
         jButton5.setBackground(new java.awt.Color(51, 204, 0));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/principal.png"))); // NOI18N
         jButton5.setOpaque(false);
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 80, 70));
 
         jButton6.setBackground(new java.awt.Color(51, 204, 0));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/castillo.png"))); // NOI18N
         jButton6.setOpaque(false);
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -282,7 +294,7 @@ public class carga extends javax.swing.JFrame {
 
         scrollObjetos.setViewportView(jPanel2);
 
-        jPanel1.add(scrollObjetos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 470, 90));
+        jPanel1.add(scrollObjetos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 470, 90));
 
         lblBackground.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -465,6 +477,21 @@ public class carga extends javax.swing.JFrame {
         crearArchivos n=new crearArchivos();
         n.graficarLista(listaObjetos);
     }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        crearLabel("principal");
+        this.jButton5.setEnabled(false);
+        this.jButton5.hide();
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        crearLabel("castillo");
+        jButton6.setEnabled(false);
+        this.jButton6.hide();
+        
+    }//GEN-LAST:event_jButton6MouseClicked
 
     public void actualizar()
     {
