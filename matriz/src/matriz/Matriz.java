@@ -16,7 +16,7 @@ public class Matriz {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        cabecera matriz=new cabecera(2,4);
+        cabecera matriz=new cabecera(8,4);
         matriz.crearCabecera();
         matriz.insertar(0, 1, "prueba");
         matriz.imprimir();
