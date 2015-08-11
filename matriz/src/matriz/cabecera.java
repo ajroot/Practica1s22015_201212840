@@ -32,7 +32,7 @@ public class cabecera {
     {
         primero=ultimo=new nodoCabecera(null,null,0,null,null);
         nodoCabecera temp;
-        for(int i=0;i<tamanoX;i++)
+        for(int i=1;i<tamanoX;i++)
         {
            temp=new nodoCabecera(ultimo,null,i,null,null);
            ultimo.setSiguiente(temp);
@@ -69,30 +69,43 @@ public class cabecera {
         nodoCabecera inicio=primero;
         nodoCabecera inicio2=inicio.getSiguiente();
         Nodo pHInicio=inicio.getPrimerHijo();
-        Nodo ph2=inicio2.getPrimerHijo();
+        Nodo ph2=null;
+        if(inicio2!=null)
+        {
+            ph2=inicio2.getPrimerHijo();
+        }
+        
         while(inicio!=null)
         {
             
            // ph2=inicio2.getPrimerHijo();
             if(inicio2!=null)
             {
-                for(int i=0;i<tamanoX;i++)
+                for(int i=0;i<tamanoY;i++)
                 {
-                    pHInicio.setDerecha(ph2);
-                    pHInicio=pHInicio.getAbajo();
-                    if(ph2!=null)
+                    if(pHInicio!=null)
                     {
-                        ph2=ph2.getAbajo();
+                        pHInicio.setDerecha(ph2);
+                        pHInicio=pHInicio.getAbajo();
+                        if(ph2!=null)
+                        {
+                            ph2=ph2.getAbajo();
+                        }
                     }
+                    
                 }
             }
             else
             {
-                for(int i=0;i<tamanoX;i++)
+                for(int i=0;i<tamanoY;i++)
                 {
-                    pHInicio.setDerecha(null);
-                    pHInicio=pHInicio.getAbajo();
-                    //ph2=ph2.getAbajo();
+                    if(pHInicio!=null)
+                    {
+                        pHInicio.setDerecha(null);
+                        pHInicio=pHInicio.getAbajo();
+                        
+                    }
+                                        //ph2=ph2.getAbajo();
                 }
             }
             inicio=inicio.getSiguiente();
@@ -113,29 +126,41 @@ public class cabecera {
         nodoCabecera inicio=ultimo;
         nodoCabecera inicio2=inicio.getAtras();
         Nodo pHInicio=inicio.getPrimerHijo();
-        Nodo ph2=inicio2.getPrimerHijo();
+        Nodo ph2=null;
+        if(inicio2!=null)
+        {
+            ph2=inicio2.getPrimerHijo();
+        }
         while(inicio!=null)
         {
             
            // ph2=inicio2.getPrimerHijo();
             if(inicio2!=null)
             {
-                for(int i=0;i<tamanoX;i++)
+                for(int i=0;i<tamanoY;i++)
                 {
-                    pHInicio.setIzquierda(ph2);
-                    pHInicio=pHInicio.getAbajo();
-                    if(ph2!=null)
+                    if(pHInicio!=null)
                     {
-                        ph2=ph2.getAbajo();
+                        pHInicio.setIzquierda(ph2);
+                        pHInicio=pHInicio.getAbajo();
+                        if(ph2!=null)
+                        {
+                            ph2=ph2.getAbajo();
+                        }
                     }
+                    
                 }
             }
             else
             {
-                for(int i=0;i<tamanoX;i++)
+                for(int i=0;i<tamanoY;i++)
                 {
-                    pHInicio.setIzquierda(null);
-                    pHInicio=pHInicio.getAbajo();
+                    if(pHInicio!=null)
+                    {
+                        pHInicio.setIzquierda(null);
+                        pHInicio=pHInicio.getAbajo();
+                    }
+                    
                     //ph2=ph2.getAbajo();
                 }
             }
@@ -152,12 +177,73 @@ public class cabecera {
         }
     }
     
-    public void insertar(int posX,int posY,Object dato)
+    public boolean insertar(int posX,int posY,Object dato)
     {
         nodoCabecera inicio=primero;
-        while(primero!=null)
+        Nodo temp;
+        while(inicio!=null)
         {
-            
+            if(inicio.getX()==posX)
+            {
+                temp=inicio.getPrimerHijo();
+                while(temp!=null)
+                {
+                    if(temp.getY()==posY)
+                    {
+                        temp.setDato(dato);
+                        return true;
+                    }
+                    temp=temp.getAbajo();
+                }
+            }
+            inicio=inicio.getSiguiente();
         }
+        return false;
+    }
+    
+    public void imprimir()
+    {
+        nodoCabecera inicio=primero;
+        Nodo temp;
+        String txtCabecera="";
+        String txtNodos="";
+        while(inicio!=null)
+        {
+            txtCabecera+=inicio.getX()+inicio.getNombre()+"\t";
+                temp=inicio.getPrimerHijo();
+                while(temp!=null)
+                {
+                    txtNodos+=temp.getX()+","+temp.getY()+String.valueOf(temp.getDato());
+                    temp=temp.getAbajo();
+                    
+                }
+            
+            inicio=inicio.getSiguiente();
+        }
+        System.out.println(txtCabecera);
+        System.out.println(txtNodos);
+    }
+    
+    public void RecorrerDerechaIzquierda()
+    {
+        nodoCabecera inicio=primero;
+        Nodo temp=inicio.getPrimerHijo();
+        Nodo temp2;
+        String texto="";
+        int contador=0;
+        while(temp!=null)
+        {
+            temp2=temp;
+            while(temp2!=null)
+            {
+                System.out.println(contador);
+                texto+=" "+temp2.getX()+","+temp2.getY()+String.valueOf(temp2.getDato())+"\t";
+                temp2=temp2.getDerecha();
+                contador++;
+            }
+            texto+="\n";
+            temp=temp.getAbajo();
+        }
+        System.out.println(texto);
     }
 }
