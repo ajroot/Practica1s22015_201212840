@@ -60,120 +60,61 @@ public class cabecera {
             contador++;
            temp=temp.getSiguiente();
         }
-        enlazarHijos();
-        enlazarAIzquierda();
+        //enlazarHijos();
+        enlazarDerecha();
+        enlazarIzquierda();
+        //enlazarAIzquierda();
     }
-    
-    public void enlazarHijos()
+    public void enlazarDerecha()
     {
-        nodoCabecera inicio=primero;
-        nodoCabecera inicio2=inicio.getSiguiente();
-        Nodo pHInicio=inicio.getPrimerHijo();
-        Nodo ph2=null;
-        if(inicio2!=null)
+        nodoCabecera recorrer=primero,siguiente;
+        Nodo primer,segundo=null;
+        Nodo r2;
+        while(recorrer!=null)
         {
-            ph2=inicio2.getPrimerHijo();
+            primer=recorrer.getPrimerHijo();
+            siguiente=recorrer.getSiguiente();
+            if(siguiente!=null)
+            {
+                segundo=recorrer.getSiguiente().getPrimerHijo();
+            }
+            r2=primer;
+            while(r2!=null)
+            {
+                r2.setDerecha(segundo);
+                if(segundo!=null)
+                {
+                    segundo=segundo.getAbajo();
+                }
+                r2=r2.getAbajo();
+            }
+            recorrer=recorrer.siguiente;
         }
-        
-        while(inicio!=null)
-        {
-            
-           // ph2=inicio2.getPrimerHijo();
-            if(inicio2!=null)
-            {
-                for(int i=0;i<tamanoY;i++)
-                {
-                    if(pHInicio!=null)
-                    {
-                        pHInicio.setDerecha(ph2);
-                        pHInicio=pHInicio.getAbajo();
-                        if(ph2!=null)
-                        {
-                            ph2=ph2.getAbajo();
-                        }
-                    }
-                    
-                }
-            }
-            else
-            {
-                for(int i=0;i<tamanoY;i++)
-                {
-                    if(pHInicio!=null)
-                    {
-                        pHInicio.setDerecha(null);
-                        pHInicio=pHInicio.getAbajo();
-                        
-                    }
-                                        //ph2=ph2.getAbajo();
-                }
-            }
-            inicio=inicio.getSiguiente();
-            if(inicio!=null)
-            {
-                pHInicio=inicio.getPrimerHijo();
-            }
-            if(inicio2!=null)
-            {
-                inicio2=inicio2.getSiguiente();
-            }
-            
-        }        
     }
-    
-    public void enlazarAIzquierda()
+   private void enlazarIzquierda()
     {
-        nodoCabecera inicio=ultimo;
-        nodoCabecera inicio2=inicio.getAtras();
-        Nodo pHInicio=inicio.getPrimerHijo();
-        Nodo ph2=null;
-        if(inicio2!=null)
+        nodoCabecera recorrer=ultimo,siguiente;
+        Nodo primer,segundo=null;
+        Nodo r2;
+        while(recorrer!=null)
         {
-            ph2=inicio2.getPrimerHijo();
-        }
-        while(inicio!=null)
-        {
-            
-           // ph2=inicio2.getPrimerHijo();
-            if(inicio2!=null)
+            primer=recorrer.getPrimerHijo();
+            siguiente=recorrer.getAtras();
+            if(siguiente!=null)
             {
-                for(int i=0;i<tamanoY;i++)
+                segundo=recorrer.getAtras().getPrimerHijo();
+            }
+            r2=primer;
+            while(r2!=null)
+            {
+                r2.setIzquierda(segundo);
+                if(segundo!=null)
                 {
-                    if(pHInicio!=null)
-                    {
-                        pHInicio.setIzquierda(ph2);
-                        pHInicio=pHInicio.getAbajo();
-                        if(ph2!=null)
-                        {
-                            ph2=ph2.getAbajo();
-                        }
-                    }
-                    
+                    segundo=segundo.getAbajo();
                 }
+                r2=r2.getAbajo();
             }
-            else
-            {
-                for(int i=0;i<tamanoY;i++)
-                {
-                    if(pHInicio!=null)
-                    {
-                        pHInicio.setIzquierda(null);
-                        pHInicio=pHInicio.getAbajo();
-                    }
-                    
-                    //ph2=ph2.getAbajo();
-                }
-            }
-            inicio=inicio.getAtras();
-            if(inicio!=null)
-            {
-                pHInicio=inicio.getPrimerHijo();
-            }
-            if(inicio2!=null)
-            {
-                inicio2=inicio2.getAtras();
-            }
-            
+            recorrer=recorrer.atras;
         }
     }
     
@@ -236,12 +177,34 @@ public class cabecera {
             temp2=temp;
             while(temp2!=null)
             {
-                System.out.println(contador);
-                texto+=" "+temp2.getX()+","+temp2.getY()+String.valueOf(temp2.getDato())+"\t";
+                //System.out.println(contador);
+                texto+=" "+temp2.getX()+","+temp2.getY()+String.valueOf(temp2.getDato())+"->";
                 temp2=temp2.getDerecha();
                 contador++;
             }
-            texto+="\n";
+            texto+="null \n";
+            temp=temp.getAbajo();
+        }
+        System.out.println(texto);
+    }
+    public void RecorrerIzquierdaDerecha()
+    {
+        nodoCabecera inicio=ultimo;
+        Nodo temp=inicio.getPrimerHijo();
+        Nodo temp2;
+        String texto="";
+        int contador=0;
+        while(temp!=null)
+        {
+            temp2=temp;
+            while(temp2!=null)
+            {
+                //System.out.println(contador);
+                texto+=" "+temp2.getX()+","+temp2.getY()+String.valueOf(temp2.getDato())+"->";
+                temp2=temp2.getIzquierda();
+                contador++;
+            }
+            texto+="null \n";
             temp=temp.getAbajo();
         }
         System.out.println(texto);
