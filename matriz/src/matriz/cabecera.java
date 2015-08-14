@@ -26,6 +26,7 @@ public class cabecera {
     {
         this.tamanoX=x;
         this.tamanoY=y;
+        
     }
     public void crearCabecera()
     {
@@ -37,6 +38,7 @@ public class cabecera {
            ultimo.setSiguiente(temp);
            ultimo=temp;
         }
+        crearHijos();
     }
     void crearHijos()
     {
@@ -57,6 +59,105 @@ public class cabecera {
             }
             contador++;
            temp=temp.getSiguiente();
+        }
+        enlazarHijos();
+        enlazarAIzquierda();
+    }
+    
+    public void enlazarHijos()
+    {
+        nodoCabecera inicio=primero;
+        nodoCabecera inicio2=inicio.getSiguiente();
+        Nodo pHInicio=inicio.getPrimerHijo();
+        Nodo ph2=inicio2.getPrimerHijo();
+        while(inicio!=null)
+        {
+            
+           // ph2=inicio2.getPrimerHijo();
+            if(inicio2!=null)
+            {
+                for(int i=0;i<tamanoX;i++)
+                {
+                    pHInicio.setDerecha(ph2);
+                    pHInicio=pHInicio.getAbajo();
+                    if(ph2!=null)
+                    {
+                        ph2=ph2.getAbajo();
+                    }
+                }
+            }
+            else
+            {
+                for(int i=0;i<tamanoX;i++)
+                {
+                    pHInicio.setDerecha(null);
+                    pHInicio=pHInicio.getAbajo();
+                    //ph2=ph2.getAbajo();
+                }
+            }
+            inicio=inicio.getSiguiente();
+            if(inicio!=null)
+            {
+                pHInicio=inicio.getPrimerHijo();
+            }
+            if(inicio2!=null)
+            {
+                inicio2=inicio2.getSiguiente();
+            }
+            
+        }        
+    }
+    
+    public void enlazarAIzquierda()
+    {
+        nodoCabecera inicio=ultimo;
+        nodoCabecera inicio2=inicio.getAtras();
+        Nodo pHInicio=inicio.getPrimerHijo();
+        Nodo ph2=inicio2.getPrimerHijo();
+        while(inicio!=null)
+        {
+            
+           // ph2=inicio2.getPrimerHijo();
+            if(inicio2!=null)
+            {
+                for(int i=0;i<tamanoX;i++)
+                {
+                    pHInicio.setIzquierda(ph2);
+                    pHInicio=pHInicio.getAbajo();
+                    if(ph2!=null)
+                    {
+                        ph2=ph2.getAbajo();
+                    }
+                }
+            }
+            else
+            {
+                for(int i=0;i<tamanoX;i++)
+                {
+                    pHInicio.setIzquierda(null);
+                    pHInicio=pHInicio.getAbajo();
+                    //ph2=ph2.getAbajo();
+                }
+            }
+            inicio=inicio.getAtras();
+            if(inicio!=null)
+            {
+                pHInicio=inicio.getPrimerHijo();
+            }
+            if(inicio2!=null)
+            {
+                inicio2=inicio2.getAtras();
+            }
+            
+        }
+    }
+    
+    public void insertar(int posX,int posY,Object dato)
+    {
+        nodoCabecera inicio=primero;
+        while(primero!=null)
+        {
+            
         }
     }
 }

@@ -16,6 +16,8 @@ public class Matriz {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        cabecera matriz=new cabecera(4,5);
+        matriz.crearCabecera();
     }
     
 }
